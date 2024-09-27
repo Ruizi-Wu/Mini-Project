@@ -90,4 +90,5 @@ class MLP(nn.Module):
             x = nn.Dense(dim_layer)(x)
             x = nn.elu(x)
         x = nn.Dense(self.dim_list[-1])(x)
-        return x
+        # return x
+        return nn.softplus(x)
