@@ -91,21 +91,3 @@ class MLP(nn.Module):
             x = nn.elu(x)
         x = nn.Dense(self.dim_list[-1])(x)
         return x
-    
-
-class MLP_posi(nn.Module):
-    """
-    Basic MLP with ReLU activation function.
-    """
-    # dimension of each layer not including the input dimension
-    dim_list: list
-
-    @nn.compact
-    def __call__(self, x):
-        for dim_layer in self.dim_list[:-1]:
-            x = nn.Dense(dim_layer)(x)
-            x = nn.elu(x)
-            # x = nn.softplus(x)
-            # x = nn.relu(x)
-        x = nn.Dense(self.dim_list[-1])(x)
-        return nn.softplus(x)
